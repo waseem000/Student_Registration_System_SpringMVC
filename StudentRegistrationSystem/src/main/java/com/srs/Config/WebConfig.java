@@ -7,14 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import com.srs.Model.User_login;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages="com.srs")
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurerAdapter{
 
 	
 	@Bean
@@ -24,10 +24,15 @@ public class WebConfig {
 		intReslover.setPrefix("WEB-INF/JSP/");
 		intReslover.setSuffix(".jsp");
 		
-		
 		return intReslover;
 	}
 	
+	@Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		 
+		registry.addResourceHandler("/CSS/**").addResourceLocations("/WEB-INF/CSS/");
+        registry.addResourceHandler("/JS/**").addResourceLocations("/WEB-INF/JS/");
+    }
 	@Bean
 	public DataSource getDataSource(){
 		

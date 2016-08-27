@@ -1,15 +1,13 @@
 package com.srs.Config;
 
-import java.sql.ResultSet;
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 
 public class DBConnection {
 
@@ -51,18 +49,25 @@ public class DBConnection {
 		return result;
 	}
 	
-	public Integer execute_statment(String sqlQuery) //update, insert, delete 
+	public String execute_statment(String sqlQuery) //update, insert, delete 
 	{
-		int rowsAffected;
+		String value = null;
+		Integer rowsAffected;
 		try{
 			rowsAffected=jdbcTemplate.update(sqlQuery);
+			value= rowsAffected.toString();
+			return value;
+		}
+		catch (DuplicateKeyException dup)
+		{
+			throw new DuplicateKeyException(sqlQuery, dup);
 		}
 		catch (DataAccessException e)
 		{
-			 throw new RuntimeException(e);
+			 value=e.getMessage();
+				return value;
+			// throw new RuntimeException(e);
 		}
-		
-		return rowsAffected;
 	}
 
 }

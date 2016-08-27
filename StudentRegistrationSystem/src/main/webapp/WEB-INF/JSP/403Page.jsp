@@ -8,6 +8,7 @@
 </head>
 <body>
 
-    <h3 style="color:red;">${login_form.getUser_name()}${Error}</h3>
+    <h3 style="color:green;">${success}</h3>
+ <h3 style="color:red;">${login_form.getUser_name()}${Error}</h3>
 </body>
 </html>

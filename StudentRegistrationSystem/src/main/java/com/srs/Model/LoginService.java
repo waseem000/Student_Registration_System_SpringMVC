@@ -6,14 +6,14 @@ import java.util.Map;
 
 import com.srs.Config.DBConnection;
 
-public class User_login {
+public class LoginService {
 
-	public int reg_id;
-	public int role_id;
-	public String user_name;
-	public String password;
-	public String first_name;
-	public String last_name;
+	private int reg_id;
+	private int role_id;
+	private String user_name;
+	private String password;
+	private String first_name;
+	private String last_name;
 
 	public Map<String, Object> results;
 
@@ -21,7 +21,7 @@ public class User_login {
 
 	public boolean userLoginValedation (String user_name, String password)
 	{
-		String sql = "select role_id, reg_id, first_name,last_name from user_login WHERE user_name='"+user_name+"' AND password= '"+password+"';";
+		String sql = "select role_id, reg_id, first_name,last_name from user WHERE user_name='"+user_name+"' AND password= '"+password+"';";
 
 		results= dbConnect.execute_query(sql); 
 

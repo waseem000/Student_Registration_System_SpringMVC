@@ -1,13 +1,18 @@
 @CHARSET "ISO-8859-1";
 
-div {
-    height: 90px;
-    width: 270px;
-    font-size: 48px;
-    font-style: oblique;
-   	color: #000;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 5px;
-    line-height: 90px;
+/* div { */
+/*     height: 90px; */
+/*     width: 270px; */
+/*     font-size: 48px; */
+/*     font-style: oblique; */
+/*    	color: #000; */
+/*     text-align: center; */
+/*     margin-top: 20px; */
+/*     margin-left: 5px; */
+/*     line-height: 90px; */
+/* } */
+
+h1
+{
+	color: red;
 }
